@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta lang="es-Mx">
+<title>Alumnos</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.6.0.js"
+	integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+	crossorigin="anonymous"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("form").submit(function(e) {
+			$("input:text").filter(function() {
+				// nos quedamos con las cajas que su contenido esta vacio
+				return $(this).val() == "";
+			}).attr("disabled", "disabled");
+			return true;
+		});
+		
+		$("form").submit(function(e) {
+			$("input:hidden").filter(function() {
+				// nos quedamos con las cajas que su contenido esta vacio
+				return $(this).val() == "";
+			}).attr("disabled", "disabled");
+			return true;
+		});
+
+		$(".orden").click(function(e) {
+			// moverme a la pagina link
+			e.preventDefault();
+			$("#orden").val($(this).text());
+			$("form").submit();
+
+		});
+
+	});
+</script>
+</head>
+<body>
+	<h1>Luis Angel Garcia Cervantes</h1>
+
+	<div class="bd-content ps-lg-4">
+		<form>
+			<div class="mb-3">
+				<label for="nombre" class="form-label">Nombre</label> <input
+					type="text" class="form-control" id="nombre" name="nombre"
+					th:value="${nombre}">
+			</div>
+			<div class="mb-3">
+				<label for="paterno" class="form-label">Paterno</label> <input
+					type="text" class="form-control" id="paterno" name="paterno"
+					th:value="${paterno}">
+			</div>
+			<input type="hidden" id="orden" name="orden" value="" />
+
+			<button type="submit" class="btn btn-primary">Enviar</button>
+		</form>
+	</div>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th><a class="orden" href="">matricula</a></th>
+				<th><a class="orden" href="">nombre</a></th>
+				<th><a class="orden" href="">paterno</a></th>
+				<th><a class="orden" href="">fnac</a></th>
+				<th><a class=orden href="">estatura</a></th>
+			</tr>
+		</thead>
+
+		<tr th:each="alumno: ${alumnos}">
+			<td th:text="${alumno.matricula}" />
+			<td th:text="${alumno.nombre}" />
+			<td th:text="${alumno.paterno}" />
+			<td th:text="${alumno.fnac}" />
+			<td th:text="${alumno.estatura}" />
+		</tr>
+	</table>
+
+</body>
+</html>
