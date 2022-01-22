@@ -12,6 +12,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "Alumnos")
 @NamedQuery(name = "Alumno.buscarAltos", query = "select a from Alumno a where a.estatura > 1.70")
@@ -26,6 +28,7 @@ public class Alumno {
 	private String matricula;
 	private String nombre;
 	private String paterno;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fnac;
 	private double estatura;
 

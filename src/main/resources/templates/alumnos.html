@@ -21,7 +21,7 @@
 			}).attr("disabled", "disabled");
 			return true;
 		});
-		
+
 		$("form").submit(function(e) {
 			$("input:hidden").filter(function() {
 				// nos quedamos con las cajas que su contenido esta vacio
@@ -61,6 +61,13 @@
 			<button type="submit" class="btn btn-primary">Enviar</button>
 		</form>
 	</div>
+
+	<div class="d-grid gap-2 col-6 mx-auto">
+		<a class="btn btn-success" href="nuevo">Nuevo Alumno</a>
+	</div>
+
+
+
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -68,7 +75,9 @@
 				<th><a class="orden" href="">nombre</a></th>
 				<th><a class="orden" href="">paterno</a></th>
 				<th><a class="orden" href="">fnac</a></th>
-				<th><a class=orden href="">estatura</a></th>
+				<th><a class="orden" href="">estatura</a></th>
+				<th>editar</th>
+				<th>eliminar</th>
 			</tr>
 		</thead>
 
@@ -78,6 +87,12 @@
 			<td th:text="${alumno.paterno}" />
 			<td th:text="${alumno.fnac}" />
 			<td th:text="${alumno.estatura}" />
+			<td><a class="btn btn-primary btn-sm"
+				th:href="@{editar/{matricula} (matricula=${alumno.matricula})}">Editar</a>
+			</td>
+			<td><a class="btn btn-danger btn-sm"
+				th:href="@{eliminar/{matricula} (matricula=${alumno.matricula})}">eliminar</a>
+			</td>
 		</tr>
 	</table>
 

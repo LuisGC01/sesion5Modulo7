@@ -36,6 +36,7 @@ public interface AlumnoRepository extends PagingAndSortingRepository<Alumno, Str
 	public List<Alumno> findByPaternoEndingWith(String prefix);
 
 	public List<Alumno> findByPaternoContaining(String prefix);
+	public List<Alumno> findByNombreContaining(String prefix);
 
 	public List<Alumno> findByPaternoLike(String prefix);
 

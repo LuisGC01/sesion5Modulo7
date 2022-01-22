@@ -26,7 +26,7 @@ public class Sesion1Application {
 		// conectividad con el servidor de base de datos
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.mariadb.jdbc.Driver"); // com.mysql.jdbc.Driver
-		dataSource.setUrl("jdbc:mariadb://localhost:3307/modulo7");
+		dataSource.setUrl("jdbc:mariadb://192.168.0.5:3307/modulo7");
 		dataSource.setUsername("root");
 		dataSource.setPassword("Holacomo2");
 		return dataSource;
